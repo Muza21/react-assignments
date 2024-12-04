@@ -44,7 +44,7 @@ function RockPaperScissors() {
   };
 
   return (
-    <>
+    <div className="container">
       <div className="input_fields">
         <div className="input_container">
           <label htmlFor="rock">
@@ -104,7 +104,7 @@ function RockPaperScissors() {
       <span>Computer: {computerWinCount}</span>
       <span>User: {userWinCount}</span>
       <span>Draw: {drawCount}</span>
-    </>
+    </div>
   );
 }
 
