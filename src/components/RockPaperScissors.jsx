@@ -1,30 +1,46 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import "./style.css";
 
 function RockPaperScissors() {
-  const [rock, setRock] = useState(false);
-  const [paper, setPaper] = useState(false);
-  const [scissors, setScissors] = useState(false);
-  const refRock = useRef(null);
-  const refPaper = useRef(null);
-  const refScissors = useRef(null);
+  const [choice, setChoice] = useState(false);
+  const [winner, setWinner] = useState("");
+  const [computerWinCount, setComputerWinCount] = useState(0);
+  const [userWinCount, setUserWinCount] = useState(0);
+  const [drawCount, setDrawCount] = useState(0);
+  const compChoice = ["rock", "paper", "scissors"];
 
   const play = () => {
-    const compChoice = Math.random();
-    if (compChoice < 0.33) {
-      setRock(true);
-      setPaper(false);
-      setScissors(false);
-    } else if (compChoice > 0.33 && compChoice < 0.66) {
-      setRock(false);
-      setPaper(true);
-      setScissors(false);
-    } else {
-      setRock(false);
-      setPaper(false);
-      setScissors(true);
+    const index = Math.floor(Math.random() * 3);
+    if (!choice) {
+      return;
     }
-    console.log(rock, paper, scissors, compChoice);
+
+    if (compChoice[index] === choice) {
+      setWinner("Draw");
+      setDrawCount((prevValue) => prevValue + 1);
+    } else if (
+      (compChoice[index] === "rock" && choice === "paper") ||
+      (compChoice[index] === "paper" && choice === "scissors") ||
+      (compChoice[index] === "scissors" && choice === "rock")
+    ) {
+      setWinner("User");
+      setUserWinCount((prevValue) => prevValue + 1);
+    } else {
+      setWinner("Computer");
+      setComputerWinCount((prevValue) => prevValue + 1);
+    }
+  };
+
+  const reset = () => {
+    setChoice("");
+    setWinner("");
+    setDrawCount(0);
+    setUserWinCount(0);
+    setComputerWinCount(0);
+  };
+
+  const handleChange = (e) => {
+    setChoice(e.target.value);
   };
 
   return (
@@ -37,10 +53,11 @@ function RockPaperScissors() {
           </label>
           <input
             type="radio"
-            ref={refRock}
             name="rock-paper-scissors"
             value="rock"
             id="rock"
+            checked={choice === "rock"}
+            onChange={handleChange}
           />
         </div>
         <div className="input_container">
@@ -50,10 +67,11 @@ function RockPaperScissors() {
           </label>
           <input
             type="radio"
-            ref={refPaper}
             name="rock-paper-scissors"
             value="paper"
             id="paper"
+            checked={choice === "paper"}
+            onChange={handleChange}
           />
         </div>
         <div className="input_container">
@@ -68,16 +86,24 @@ function RockPaperScissors() {
           </label>
           <input
             type="radio"
-            ref={refScissors}
             name="rock-paper-scissors"
             value="scissors"
             id="scissors"
+            checked={choice === "scissors"}
+            onChange={handleChange}
           />
         </div>
       </div>
       <button className="button" onClick={play}>
         Play
       </button>
+      <button className="button" onClick={reset}>
+        Reset
+      </button>
+      <h3>Winner: {winner ?? ""}</h3>
+      <span>Computer: {computerWinCount}</span>
+      <span>User: {userWinCount}</span>
+      <span>Draw: {drawCount}</span>
     </>
   );
 }

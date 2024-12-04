@@ -13,11 +13,13 @@
   text-align: center;
   padding: 10px;
   border-radius: 6px;
+}
+.input_container label {
   cursor: pointer;
 }
 
-.input_container:hover {
-  background-color: #c2c2c2;
+.input_container label:hover {
+  background-color: #557bce;
 }
 
 .button {
@@ -38,4 +40,10 @@
 
 .input_container label p::first-letter {
   text-transform: uppercase;
+}
+
+span {
+  font-size: 24px;
+  margin-right: 20px;
+  font-weight: 500;
 }
