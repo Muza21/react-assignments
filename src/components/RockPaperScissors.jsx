@@ -1,4 +1,6 @@
 import { useState } from "react";
+import React from "react";
+import UserInput from "./UserInput";
 import "./style.css";
 
 function RockPaperScissors() {
@@ -39,60 +41,25 @@ function RockPaperScissors() {
     setComputerWinCount(0);
   };
 
-  const handleChange = (e) => {
-    setChoice(e.target.value);
+  const handleChange = (val) => {
+    setChoice(val);
   };
 
   return (
     <div className="container">
       <div className="input_fields">
-        <div className="input_container">
-          <label htmlFor="rock">
-            <img src="./rock.png" alt="rock" width="100px" height="100px" />
-            <p>rock</p>
-          </label>
-          <input
-            type="radio"
-            name="rock-paper-scissors"
-            value="rock"
-            id="rock"
-            checked={choice === "rock"}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="input_container">
-          <label htmlFor="paper">
-            <img src="./paper.png" alt="paper" width="100px" height="100px" />
-            <p>paper</p>
-          </label>
-          <input
-            type="radio"
-            name="rock-paper-scissors"
-            value="paper"
-            id="paper"
-            checked={choice === "paper"}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="input_container">
-          <label htmlFor="scissors">
-            <img
-              src="./scissors.png"
-              alt="scissors"
-              width="100px"
-              height="100px"
-            />
-            <p>scissors</p>
-          </label>
-          <input
-            type="radio"
-            name="rock-paper-scissors"
-            value="scissors"
-            id="scissors"
-            checked={choice === "scissors"}
-            onChange={handleChange}
-          />
-        </div>
+        {compChoice.map((c) => {
+          return (
+            <React.Fragment key={c}>
+              <UserInput
+                id={c}
+                choice={choice}
+                handleChange={() => handleChange(c)}
+                title={c}
+              />
+            </React.Fragment>
+          );
+        })}
       </div>
       <button className="button" onClick={play}>
         Play
