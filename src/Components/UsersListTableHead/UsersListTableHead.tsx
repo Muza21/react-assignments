@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "./usersListTableHead.module.css";
 
 export type SortType = "asc" | "desc";
@@ -46,4 +47,4 @@ const UsersListTableHead = (props: UsersListTableHeadProps) => {
   );
 };
 
-export default UsersListTableHead;
+export default memo(UsersListTableHead, () => true);

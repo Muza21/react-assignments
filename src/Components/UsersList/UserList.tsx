@@ -19,6 +19,7 @@ const UserList = () => {
   };
 
   const sortByFirstName = () => {
+    console.log("rerender");
     if (nameSort === "asc") {
       setUsers((previousUsers) => {
         const newUsers = [...previousUsers];

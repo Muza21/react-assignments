@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import { memo, useState } from "react";
 import styles from "./UserAddForm.module.css";
 import { Person } from "../../static/data";
 
@@ -41,7 +42,6 @@ const UserAddForm = (props: UserAddFormProps) => {
     });
     addNewUser(values);
   };
-
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <label htmlFor="first_name" className={styles.label}>

@@ -1,13 +1,13 @@
 import { Person } from "../../static/data";
-import styles from './UserListItem.module.css'
+import styles from "./UserListItem.module.css";
 
 type UserListItemProps = {
   user: Person;
   removeUser: (id: number) => void;
-}
+};
 
 const UserListItem = (props: UserListItemProps) => {
-  const {user, removeUser} = props;
+  const { user, removeUser } = props;
 
   return (
     <tr key={user.id}>
@@ -23,7 +23,7 @@ const UserListItem = (props: UserListItemProps) => {
         <button onClick={() => removeUser(user.id)}>remove user</button>
       </td>
     </tr>
-  )
-}
+  );
+};
 
 export default UserListItem;
