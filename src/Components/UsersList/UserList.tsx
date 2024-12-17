@@ -5,6 +5,7 @@ import UsersListTableHead, {
 } from "../UsersListTableHead/UsersListTableHead";
 import styles from "./UsersList.module.css";
 import UserListItem from "../UserItem/UserListItem";
+import UserAddForm from "../UserAddForm/UserAddForm";
 
 const UserList = () => {
   const [users, setUsers] = useState<Person[]>(data);
@@ -67,6 +68,7 @@ const UserList = () => {
 
   return (
     <div className={styles.table_container}>
+      <UserAddForm />
       <table>
         <UsersListTableHead
           sortByFirstName={sortByFirstName}
