@@ -11,6 +11,7 @@ const UserList = () => {
   const [users, setUsers] = useState<Person[]>(data);
   const [nameSort, setNameSort] = useState<SortType>();
   const [ageSort, setAgeSort] = useState<SortType>();
+  const [count, setCount] = useState<number>(0);
 
   const removeUser = (id: number) => {
     setUsers((previousUsers) => {
@@ -66,9 +67,27 @@ const UserList = () => {
     }
   };
 
+  const addNewUser = (e: any) => {
+    e.preventDefault();
+    setCount((previousValue) => previousValue + 1);
+    const obj = {
+      id: 1000 + count,
+      first_name: e.target.children[1].value,
+      last_name: e.target.children[3].value,
+      email: e.target.children[5].value,
+      age: e.target.children[7].value,
+      gender: e.target.children[9].value,
+      job: e.target.children[11].value,
+      country: e.target.children[13].value,
+    };
+    setUsers((previousUsers) => {
+      return [obj, ...previousUsers];
+    });
+  };
+
   return (
     <div className={styles.table_container}>
-      <UserAddForm />
+      <UserAddForm submitHandler={addNewUser} />
       <table>
         <UsersListTableHead
           sortByFirstName={sortByFirstName}

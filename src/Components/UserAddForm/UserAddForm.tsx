@@ -1,8 +1,13 @@
 import styles from "./UserAddForm.module.css";
 
-const UserAddForm = () => {
+type UserAddFormProps = {
+  submitHandler: () => void;
+};
+
+const UserAddForm = (props: UserAddFormProps) => {
+  const { submitHandler } = props;
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={submitHandler}>
       <label htmlFor="first_name" className={styles.label}>
         First Name
       </label>
