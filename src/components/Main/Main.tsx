@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ToDoTasksList from "../ToDoTasksList/ToDoTasksList";
 import styles from "./Main.module.css";
+import TaskContext from "../../Store/TaskContext/TaskContext";
 
 export type Task = {
   body: string;
@@ -9,7 +10,8 @@ export type Task = {
 
 const Main = () => {
   const [searchInput, setSearchInput] = useState<string>("");
-  const [tasksList, setTasksList] = useState<Task[]>([]);
+  // const [tasksList, setTasksList] = useState<Task[]>([]);
+  const { tasksList, updateTasksList, removeTask } = useContext(TaskContext);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
@@ -22,16 +24,8 @@ const Main = () => {
       id: tasksList.length + 1,
       body: searchInput,
     };
-    setTasksList((prevList: Task[]) => {
-      return [obj, ...prevList];
-    });
+    updateTasksList(obj);
     setSearchInput("");
-  };
-
-  const removeTask = (id: number) => {
-    setTasksList((prevList) => {
-      return prevList.filter((task) => task.id !== id);
-    });
   };
 
   return (
