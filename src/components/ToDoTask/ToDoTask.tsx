@@ -1,11 +1,18 @@
+import { Task } from "../Main/Main";
 import styles from "./ToDoTask.module.css";
 
-const ToDoTask = () => {
+type ToDoTaskProps = {
+  task: Task;
+  removeTask: (id: number) => void;
+};
+
+const ToDoTask = (props: ToDoTaskProps) => {
+  const { task, removeTask } = props;
   return (
     <>
       <li className={styles.task}>
-        <p>this is a task</p>
-        <button>
+        <p>{task.body}</p>
+        <button onClick={() => removeTask(task.id)}>
           <img src="Trash.svg" alt="" />
         </button>
       </li>
