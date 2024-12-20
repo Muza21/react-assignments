@@ -1,13 +1,15 @@
+import { useContext } from "react";
 import { Task } from "../Main/Main";
 import styles from "./ToDoTask.module.css";
+import TaskContext from "../../Store/TaskContext/TaskContext";
 
 type ToDoTaskProps = {
   task: Task;
-  removeTask: (id: number) => void;
 };
 
 const ToDoTask = (props: ToDoTaskProps) => {
-  const { task, removeTask } = props;
+  const { task } = props;
+  const { removeTask } = useContext(TaskContext);
   return (
     <>
       <li className={styles.task}>

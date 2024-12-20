@@ -10,8 +10,7 @@ export type Task = {
 
 const Main = () => {
   const [searchInput, setSearchInput] = useState<string>("");
-  // const [tasksList, setTasksList] = useState<Task[]>([]);
-  const { tasksList, updateTasksList, removeTask } = useContext(TaskContext);
+  const { tasksList, updateTasksList } = useContext(TaskContext);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
@@ -43,7 +42,7 @@ const Main = () => {
           </div>
         </form>
         <div className={styles.line}></div>
-        <ToDoTasksList tasks={tasksList} removeTask={removeTask} />
+        <ToDoTasksList />
       </main>
     </>
   );

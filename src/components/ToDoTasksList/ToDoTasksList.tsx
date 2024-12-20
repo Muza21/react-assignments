@@ -1,23 +1,17 @@
-import React from "react";
-import { Task } from "../Main/Main";
+import React, { useContext } from "react";
 import styles from "./ToDoTasksList.module.css";
 import ToDoTask from "../ToDoTask/ToDoTask";
+import TaskContext from "../../Store/TaskContext/TaskContext";
 
-type ToDoTasksListProps = {
-  tasks: Task[];
-  removeTask: (id: number) => void;
-};
-
-const ToDoTasksList = (props: ToDoTasksListProps) => {
-  const { tasks, removeTask } = props;
-
+const ToDoTasksList = () => {
+  const { tasksList } = useContext(TaskContext);
   return (
     <>
       <ul className={styles.tasks_list}>
-        {tasks.map((task) => {
+        {tasksList.map((task) => {
           return (
             <React.Fragment key={task.id}>
-              <ToDoTask task={task} removeTask={removeTask} />
+              <ToDoTask task={task} />
             </React.Fragment>
           );
         })}
