@@ -5,11 +5,13 @@ const Main = () => {
   return (
     <>
       <main className={styles.main}>
-        <form action="">
-          <input type="text" />
-          <button>add task</button>
+        <form action="" className={styles.form}>
+          <div>
+            <input type="text" className={styles.input} />
+            <button className={styles.button}>add task</button>
+          </div>
         </form>
-        <span></span>
+        <div className={styles.line}></div>
         <ToDoTasksList />
       </main>
     </>

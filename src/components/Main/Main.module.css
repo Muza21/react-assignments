@@ -1,0 +1,51 @@
+.main {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form div {
+  width: 100%;
+  max-width: 826px;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  padding: 6px 22px;
+  height: 50px;
+  outline: inherit;
+  border: none;
+}
+
+.button {
+  font-family: "Racing Sans One", serif;
+  background-color: #4f4f4f;
+  padding: 6px 22px;
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 400;
+  border-radius: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+}
+.button::first-letter {
+  text-transform: uppercase;
+}
+
+.line {
+  width: 100%;
+  max-width: 966px;
+  border: 2px solid #ffffff;
+  margin: 35px auto 80px auto;
+}

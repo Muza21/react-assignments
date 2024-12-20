@@ -1,0 +1,9 @@
+.tasks_list {
+  width: 100%;
+  max-width: 822px;
+  list-style-type: none;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 400;
+  margin: 0 auto;
+}

@@ -6,13 +6,13 @@ const Header = () => {
       <header className={styles.header}>
         <div>
           <span></span>
-          <h1>to-do-now</h1>
+          <h1>to-do now</h1>
           <span></span>
         </div>
         <div>
-          <span></span>
+          <span className={styles.line}></span>
           <img src="NotePencil.svg" alt="" />
-          <span></span>
+          <span className={styles.line}></span>
         </div>
       </header>
     </>
